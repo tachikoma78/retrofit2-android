@@ -2,7 +2,14 @@ package com.google.retrofittutorial;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
+import java.io.IOException;
+
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 
 public class MainActivity extends AppCompatActivity {
@@ -314,6 +321,86 @@ public class MainActivity extends AppCompatActivity {
         }
 
     */
+
+    // Form URL encoded annotation
+    /*
+    String id = "500";
+    String userId = "500";
+    String title = "predator";
+    String body = "somebody sometext";
+
+
+    api.createPosts(id, userId, title, body).enqueue(new Callback<ResponseBody>() {
+        @Override
+        public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+            try {
+                Log.d("RetrofitExample", response.body().string());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        @Override
+        public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+        }
+    });
+    */
+    // Request Header
+    /*
+        api.sendRequestWithHeaders().enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                try {
+                    Log.d("RetrofitExample", response.body().string());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+            }
+        });
+      */
+    //Dynamic headers
+    /*
+        api.sendRequestWithDynamicHeaders("application/json", "RetrofitExample").enqueue(new Callback<ResponseBody>() {
+        @Override
+        public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+            try {
+                Log.d("RetrofitExample", response.body().string());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        @Override
+        public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+        }
+    });
+    */
+    //Authorization Header
+        api.sendRequestWithPassword64Headers("Basic bXl1c2VybmFtZTpteXBhc3N3b3Jk").enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                try {
+                    Log.d("RetrofitExample", response.body().string());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+            }
+        });
+
+
+
     }
 
 
